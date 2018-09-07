@@ -1,7 +1,7 @@
 # radiustest
 Radius client in python
 
-###I. Introduction
+### I. Introduction
 
 This is a flexible radius client. The main idea is to have a client which could be easily used to test different Radius servers.
 Client supports:
@@ -28,14 +28,14 @@ This client is not fully RFC compliant. There are many corner case scenarios whi
 Author: Michal Garcarz AT cisco.com
 License: Open Software License
 
-###II. Requirements
+### II. Requirements
 - Python 2.x (tested on python 2.7.5)
 - Scapy 2.2 (tested on scanpy 2.2.0)
 
-###III. Installation
+### III. Installation
 No need. Just run ./radiustest.py or python3 radiustest.py
 
-###IV. Examples
+### IV. Examples
 
 1. Sending 1 Access-Request for username/password cisco/cisco, secret=cisco, source port = 666, waiting 4 seconds for reply.
 Attaching AVP: NAS-IP-Address, Service-Type, NAS-Port-Type, Called-Station-Id, Calling-Station-Id
@@ -321,7 +321,7 @@ Radius-Acconting-NACK received: 0
 Other Radius messages received: 0
 Finishing main thread
 ```
-###V. Known Caveats:
+### V. Known Caveats:
 1. Scapy does not support two default gateways 
 When using VPN adapter we usually have two default gateways:
 ```
@@ -338,5 +338,5 @@ Then most specific network will be used instead of default route.
 2. Scapy can not sniff traffic on TUN interface
 When using VPN and tun interface (tun0) scapy will not be able to sniff traffic.
 
-###VI. TODO
+### VI. TODO
 Add support for EAP-PEAP and EAP-TLS.
