@@ -29,7 +29,7 @@ Author: Michal Garcarz AT cisco.com
 License: Open Software License
 
 ### II. Requirements
-- Python 2.x (tested on python 2.7.5)
+- Python 2.x (tested on python 2.7.5). Also works with python 3.x - tested 3.6.5 - but might be some minor bugs (no extensive testing)
 - Scapy 2.2 (tested on scanpy 2.2.0)
 
 ### III. Installation
@@ -313,12 +313,16 @@ AVP[2] Type: 44 (Acct-Session-Id) Value: 123456
 AVP[3] Type: 40 (Acct-Status-Type) Value: 1 (Start)
 
 Waiting 5 seconds for the responses
+Received Radius Packet......
+Radius packet details: 172.16.32.10:1813 -> 172.16.32.1:36692
+Radius Code: 5 (Accounting-Response)
+Radius Id: 178
 Finishing sniffing thread
 Results:
 Radius-Accounting-Request sent: 1
 Radius-Accouting-ACK received: 0
 Radius-Acconting-NACK received: 0
-Other Radius messages received: 0
+Other Radius messages received: 1
 Finishing main thread
 ```
 ### V. Known Caveats:
