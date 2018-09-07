@@ -40,10 +40,11 @@ IV. Examples
 1. Sending 1 Access-Request for username/password cisco/cisco, secret=cisco, source port = 666, waiting 4 seconds for reply.
 Attaching AVP: NAS-IP-Address, Service-Type, NAS-Port-Type, Called-Station-Id, Calling-Station-Id
 
-    ./radiustest.py -d 192.168.10.120 -t 4 -s cisco -u cisco -p cisco -an 1.1.1.1 -sp 666 -n 1 -as framed -ap ethernet -ac 11:22:33:44:55:66 -ai 55:55:55:55:55:55 
-    Starting sniffing daemon
-    Choosen tap1 interface for sniffing
-    Sending Radius Access-Requests
+```
+./radiustest.py -d 192.168.10.120 -t 4 -s cisco -u cisco -p cisco -an 1.1.1.1 -sp 666 -n 1 -as framed -ap ethernet -ac 11:22:33:44:55:66 -ai 55:55:55:55:55:55 
+Starting sniffing daemon
+Choosen tap1 interface for sniffing
+Sending Radius Access-Requests
 Sending Radius Packet.......
 Radius packet details: 192.168.10.1:666 -> 192.168.10.120:1812
 Radius Code: 1 (Access-Request)
@@ -76,7 +77,7 @@ Radius-Accept received: 1
 Radius-Reject received: 0
 Other Radius messages received: 0
 Finishing main thread
-
+```
 2. Sending Motorola VSA pair: vendor id = 388, attribute number = 2 (Symbol-Current-ESSID 
 ), attribute value = "WLAN_SSID", attribute type = string
 
