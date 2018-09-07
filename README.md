@@ -1,7 +1,7 @@
 # radiustest
 Radius client in python
 
-I. Introduction
+###I. Introduction
 
 This is a flexible radius client. The main idea is to have a client which could be easily used to test different Radius servers.
 Client supports:
@@ -28,14 +28,14 @@ This client is not fully RFC compliant. There are many corner case scenarios whi
 Author: Michal Garcarz AT cisco.com
 License: Open Software License
 
-II. Requirements
+###II. Requirements
 - Python 2.x (tested on python 2.7.5)
 - Scapy 2.2 (tested on scanpy 2.2.0)
 
-III. Installation
-No need. Just run ./radiustest.py. 
+###III. Installation
+No need. Just run ./radiustest.py or python3 radiustest.py
 
-IV. Examples
+###IV. Examples
 
 1. Sending 1 Access-Request for username/password cisco/cisco, secret=cisco, source port = 666, waiting 4 seconds for reply.
 Attaching AVP: NAS-IP-Address, Service-Type, NAS-Port-Type, Called-Station-Id, Calling-Station-Id
@@ -80,7 +80,7 @@ Finishing main thread
 ```
 2. Sending Motorola VSA pair: vendor id = 388, attribute number = 2 (Symbol-Current-ESSID 
 ), attribute value = "WLAN_SSID", attribute type = string
-
+```
 ./radiustest.py -d 10.48.66.185 -avi 388 -avt 2 -avv "Wlan essid" -avx string
 Starting sniffing daemon
 Choosen eth0 interface for sniffing
@@ -103,10 +103,10 @@ Radius-Accept received: 0
 Radius-Reject received: 0
 Other Radius messages received: 0
 Finishing main thread
-
+```
 
 3. Sending Cisco VSA pair: vendor id = 9, attribute number = 21 (Cisco-Abort-Cause), attribute value = Client, attribute type = string
-
+```
 ./radiustest.py -d 10.48.66.185 -avi 9 -avt 21 -avv "Client Abort" -avx string
 Starting sniffing daemon
 Choosen eth0 interface for sniffing
@@ -134,9 +134,9 @@ Radius-Accept received: 0
 Radius-Reject received: 1
 Other Radius messages received: 0
 Finishing main thread
-
+```
 4. Sending Cisco VSA pair: vendor id = 9, attribute number = 244 (Cisco-Idle-Limit), attribute value = 100, attribute type = hex
-
+```
 ./radiustest.py -d 10.48.66.185 -avi 9 -avt 244 -avv 100 -avx hex
 Starting sniffing daemon
 Choosen eth0 interface for sniffing
@@ -164,10 +164,10 @@ Radius-Accept received: 0
 Radius-Reject received: 1
 Other Radius messages received: 0
 Finishing main thread
-
+```
 5. Sending Cisco-AV-Pair (vendor_id 9, attribute number = 1). That AVP is commonly used for all custom Cisco attributes.
 This example is for Cisco-AV-Pair which contains audit-session-id value. 
-
+```
 ./radiustest.py -d 10.48.66.185 -avi 9 -avt 1 -avv "audit-session-id=0A30276F00001225751086B2" -avx string
 Starting sniffing daemon
 Choosen tun0 interface for sniffing
@@ -190,9 +190,9 @@ Radius-Accept received: 0
 Radius-Reject received: 0
 Other Radius messages received: 0
 Finishing main thread
-
+```
 6. Send request and receive multiple Cisco IPSec attributes for VPN access
-
+```
 ./radiustest.py -u test -p test -d 10.48.66.185 
 Starting sniffing daemon
 Choosen eth0 interface for sniffing
@@ -218,9 +218,9 @@ AVP[3] Type: 26 (Vendor Specific Attribute) Vendor: 3076 (Cisco VPN 3000) Type: 
 AVP[4] Type: 26 (Vendor Specific Attribute) Vendor: 3076 (Cisco VPN 3000) Type: 61 (CVPN3000-DHCP-Network-Scope) Value: 10.0.0.0
 AVP[5] Type: 26 (Vendor Specific Attribute) Vendor: 3076 (Cisco VPN 3000) Type: 85 (CVPN3000-Tunnel-Group-Lock) Value: TunnelGroup
 AVP[6] Type: 26 (Vendor Specific Attribute) Vendor: 3076 (Cisco VPN 3000) Type: 220 (CVPN3000-Privilege-Level) Value: 15
-
+```
 7. Send request and receive multiple Cisco-AV-Pairs for auth proxy and 802.1x:
-
+```
 ./radiustest.py -u test -p test -d 10.48.66.185 
 Starting sniffing daemon
 Choosen eth0 interface for sniffing
@@ -244,10 +244,10 @@ AVP[1] Type: 25 (Class) Value: CACS:acs54/172239296/1862
 AVP[2] Type: 26 (Vendor Specific Attribute) Vendor: 9 (Cisco) Type: 1 (Cisco-AV-Pair) Value: ip:inacl#1=deny ip 10.155.10.0 0.0.0.255  10.159.2.0 0.0.0.255 log
 AVP[3] Type: 26 (Vendor Specific Attribute) Vendor: 9 (Cisco) Type: 1 (Cisco-AV-Pair) Value: auth-proxy:priv-lvl=15
 AVP[4] Type: 26 (Vendor Specific Attribute) Vendor: 9 (Cisco) Type: 1 (Cisco-AV-Pair) Value: auth-proxy:proxyacl#1=permit icmp any any
-
+```
 
 8. Sending 10 packets, waiting 5 seconds for all responses,  using default settings
-
+```
 ./radiustest.py -d 192.168.10.120 -t 5 -n 10
 
 Starting sniffing daemon
@@ -270,9 +270,9 @@ Radius-Accept received: 10
 Radius-Reject received: 0
 Other Radius messages received: 0
 Finishing main thread
-
+```
 9. Sending Motorola VSA attribute type integer with value trimmed to 1 Byte (violating RFC 2865 which is expecting 4 byte value)
-
+```
 ./radiustest.py -d 10.48.66.185 -avi 388 -avt 4 -avv 3 -avx hex -avc 1
 Starting sniffing daemon
 Choosen eth0 interface for sniffing
@@ -295,9 +295,9 @@ Radius-Accept received: 0
 Radius-Reject received: 0
 Other Radius messages received: 0
 Finishing main thread
-
+```
 10. Sending Accouting start message
-
+```
 ./radius-accttest.py -d 172.16.32.10 -s test -at start -ad 123456
 Starting sniffing daemon
 Choosen vmnet8 interface for sniffing
@@ -320,15 +320,15 @@ Radius-Accouting-ACK received: 0
 Radius-Acconting-NACK received: 0
 Other Radius messages received: 0
 Finishing main thread
-
-V. Known Caveats:
+```
+###V. Known Caveats:
 1. Scapy does not support two default gateways 
 When using VPN adapter we usually have two default gateways:
-
+```
 pluton tmp # ip route show
 default dev tun0  scope link 
 default via 10.0.0.1 dev wlan0  metric 20 
-
+```
 One for VPN (metric=0), and second for network access (metric=20).
 Scapy will try to use the second one - with worse metric.
 
@@ -338,5 +338,5 @@ Then most specific network will be used instead of default route.
 2. Scapy can not sniff traffic on TUN interface
 When using VPN and tun interface (tun0) scapy will not be able to sniff traffic.
 
-VI. TODO
+###VI. TODO
 Add support for EAP-PEAP and EAP-TLS.
